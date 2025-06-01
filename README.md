@@ -1,4 +1,4 @@
-#2D Trail Effect (Free)
+# 2D Trail Effect (Free)
 
 2D Trail Effect is a simple-to-use Unity tool to create 2D trails generating by game objects. 
 
