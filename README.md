@@ -11,4 +11,5 @@ The distance between with trail object is precisely calculated, ensuring consist
 
 This is the free version which only contains the core features. For full features, consider buying the [Pro](https://assetstore.unity.com/packages/slug/321931) version (waiting to be reviewed).  
 To download the package or to get more information, please visit the [Asset Store](https://assetstore.unity.com/packages/slug/321665) (waiting to be reviewed).  
-PDF documentation (English and Traditional Chinese versions available) and online documentation are accessable from there in the description.
+
+Online documentations are accessable from the asset store in the description. PDF documentations are also included in the package. English and Traditional Chinese documentations are currently available.
