@@ -9,6 +9,6 @@ BlackCatTrail.TrailManager.Instance.StartTrail(the_gameobject_to_spawn_the_trail
 
 The distance between with trail object is precisely calculated, ensuring consistent gaps regardless of the FPS.
 
-This is the free version which only contains the core features. For full features, consider buying the Pro version.  
+This is the free version which only contains the core features. For full features, consider buying the [Pro](https://assetstore.unity.com/packages/slug/321931) version (waiting to be reviewed).  
 To download the package or to get more information, please visit the [Asset Store](https://assetstore.unity.com/packages/slug/321665) (waiting to be reviewed).  
 PDF documentation (English and Traditional Chinese versions available) and online documentation are accessable from there in the description.
