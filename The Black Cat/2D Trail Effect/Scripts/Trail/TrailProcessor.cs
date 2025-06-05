@@ -17,7 +17,7 @@ namespace BlackCatTrail
         public void Initialise(TrailInstance instance)
         {            
             this.instance = instance;
-            trans = instance.GetSpriteRenderer().transform;
+            trans = instance.transform;
             currentDepth = trans.position.z + 1;
 
             timeOrDistance = 0;

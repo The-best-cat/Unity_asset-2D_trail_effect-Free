@@ -30,7 +30,7 @@ namespace BlackCatTrail
             sr.sprite = instance.GetSpriteRenderer().sprite;
             sr.color = instance.TrailColour.Evaluate(0);
 
-            Vector2 lossyScale = instance.GetSpriteRenderer().transform.lossyScale;
+            Vector2 lossyScale = instance.transform.lossyScale;
             Vector2 size = instance.StartSizeType == SizingType.FOLLOW_REAL_SIZE ? lossyScale * instance.StartMultiplier : instance.StartSize;
             sr.transform.localScale = start = size;
 

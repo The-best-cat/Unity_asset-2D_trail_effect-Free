@@ -32,7 +32,7 @@ namespace BlackCatTrail
 
         [Tooltip("The type of easing of colour and scale changes.")]
         public EaseType EaseType;
-        [Min(2)] public float Power = 2;
+        [Range(2, 5)] public float Power = 2;
 
         [Tooltip("The amount of time a trail object will live in seconds.")]
         public float Lifespan;
