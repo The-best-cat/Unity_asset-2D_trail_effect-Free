@@ -351,8 +351,8 @@ MonoBehaviour:
   OrderInLayer: 0
   TrailColour:
     serializedVersion: 2
-    key0: {r: 0.6044395, g: 1, b: 0.5330188, a: 1}
-    key1: {r: 0.3726415, g: 1, b: 0.81302255, a: 0}
+    key0: {r: 1, g: 1, b: 1, a: 0.49803922}
+    key1: {r: 1, g: 1, b: 1, a: 0}
     key2: {r: 0.41037738, g: 0.78496134, b: 1, a: 0}
     key3: {r: 0.63562703, g: 0.3066038, b: 1, a: 0}
     key4: {r: 1, g: 0.4292453, b: 0.768722, a: 0}
@@ -360,7 +360,7 @@ MonoBehaviour:
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 12914
+    ctime1: 65535
     ctime2: 26407
     ctime3: 40285
     ctime4: 54163
@@ -377,7 +377,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_ColorSpace: -1
-    m_NumColorKeys: 5
+    m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   AffectedByEasing: 0
   StartSizeType: 0
@@ -385,7 +385,7 @@ MonoBehaviour:
   StartMultiplier: {x: 1, y: 1}
   EndSizeType: 0
   EndSize: {x: 0, y: 0}
-  EndMultiplier: {x: 1.4, y: 1.4}
+  EndMultiplier: {x: 1.2, y: 1.2}
   EaseType: 1
   Power: 2
   Lifespan: 1
@@ -494,8 +494,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoCleanUp: 1
-  cleanUpAfterSeconds: 20
-  numberOfTrailRemains: 10
+  cleanUpAfterSeconds: 10
+  numberOfTrailRemains: 0
 --- !u!4 &1962640448
 Transform:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ namespace BlackCatTrail
         [SerializeField] private bool autoCleanUp = true;
 
         [Tooltip("The time you want the manager to automatically clean up inactive trail objects since the last trail ended in seconds.")]
-        [SerializeField] private float cleanUpAfterSeconds = 20;
+        [SerializeField] private float cleanUpAfterSeconds = 10;
 
         [Tooltip("The minimum number of inactive trail objects you wish to remain after auto clean up.")]
         [SerializeField] private int numberOfTrailRemains = 10;
@@ -114,7 +114,7 @@ namespace BlackCatTrail
         {
             if (inactiveTrails.Count == 0)
             {
-                CreateMoreTrails(trailCount);
+                CreateMoreTrails(trailCount > 0 ? trailCount : 10);
             }
 
             return inactiveTrails.Dequeue();

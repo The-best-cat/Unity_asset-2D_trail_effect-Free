@@ -8,11 +8,17 @@ namespace BlackCatTrail
     {
         private float currentDepth, timeOrDistance;       
         private bool isSpawning;
-        private Vector2 prevPos;
+        private Vector2 prevPos, prevSpawnPos;
         private Transform trans;
         private TrailInstance instance;
         private Func<float, float, float> equation;        
         private Queue<TrailObject> activeTrail = new Queue<TrailObject>();
+
+        private void OnDisable()
+        {
+            isSpawning = false;
+            TrailManager.Instance.StopTrail(trans.gameObject);
+        }
 
         public void Initialise(TrailInstance instance)
         {            
@@ -21,7 +27,7 @@ namespace BlackCatTrail
             currentDepth = trans.position.z + 1;
 
             timeOrDistance = 0;
-            prevPos = trans.position;
+            prevPos = prevSpawnPos = trans.position;
             equation = EasingManager.GetEquation(instance.EaseType); 
             isSpawning = true;
 
@@ -70,13 +76,6 @@ namespace BlackCatTrail
         {
             if (isSpawning)
             {
-                if (!trans.gameObject.activeInHierarchy)
-                {
-                    isSpawning = false;
-                    TrailManager.Instance.StopTrail(trans.gameObject);
-                    return;
-                }
-
                 Vector2 currentPos = trans.position;
                 if (instance.SpawnCondition == TrailSpawningCondition.TIME)
                 {
@@ -85,25 +84,54 @@ namespace BlackCatTrail
                     {
                         if (instance.TimeBetweenSpawn <= 0) break;
 
-                        Vector2 newPos = Vector2.Lerp(prevPos, currentPos, instance.TimeBetweenSpawn / timeOrDistance);
+                        Vector2 newPos = Vector2.Lerp(prevSpawnPos, currentPos, instance.TimeBetweenSpawn / timeOrDistance);
                         Spawn(newPos);
                         timeOrDistance -= instance.TimeBetweenSpawn;
-                        prevPos = newPos;
+                        prevSpawnPos = newPos;
                     }
                 }
-                else
+                else if (instance.SpawnCondition == TrailSpawningCondition.DISTANCE_SINCE_PREV)
                 {
-                    timeOrDistance = Vector2.Distance(prevPos, currentPos);
+
+                    timeOrDistance = Vector2.Distance(prevSpawnPos, currentPos);
                     while (timeOrDistance >= instance.DistanceBetweenSpawn)
                     {
                         if (instance.DistanceBetweenSpawn <= 0) break;
 
-                        Vector2 newPos = prevPos + (currentPos - prevPos).normalized * instance.DistanceBetweenSpawn;
+                        Vector2 newPos = prevSpawnPos + (currentPos - prevSpawnPos).normalized * instance.DistanceBetweenSpawn;
                         Spawn(newPos);
-                        prevPos = newPos;
+                        prevSpawnPos = newPos;
                         timeOrDistance -= instance.DistanceBetweenSpawn;
                     }
                 }
+                else
+                {
+                    timeOrDistance += Vector2.Distance(prevPos, currentPos);
+                    bool bl = Vector2.Distance(prevPos, currentPos) >= instance.DistanceBetweenSpawn;
+
+                    while (timeOrDistance >= instance.DistanceBetweenSpawn)
+                    {
+                        if (instance.DistanceBetweenSpawn <= 0) break;
+
+                        if (bl)
+                        {
+                            Vector2 newPos = prevSpawnPos + (currentPos - prevSpawnPos).normalized * instance.DistanceBetweenSpawn;
+                            Spawn(newPos);
+                            prevSpawnPos = newPos;
+                            timeOrDistance -= instance.DistanceBetweenSpawn;
+                        }
+                        else
+                        {
+                            Vector2 newPos = currentPos;
+                            newPos = prevSpawnPos + Vector2.ClampMagnitude(newPos - prevSpawnPos, instance.DistanceBetweenSpawn);
+                            Spawn(newPos);
+                            prevSpawnPos = newPos;
+                            timeOrDistance -= instance.DistanceBetweenSpawn;
+                        }
+                    }
+                }
+
+                prevPos = currentPos;
             }
         }
     }

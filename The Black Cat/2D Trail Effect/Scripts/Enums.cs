@@ -9,7 +9,8 @@ namespace BlackCatTrail
     public enum TrailSpawningCondition
     {
         TIME,
-        DISTANCE
+        DISTANCE_SINCE_PREV,
+        DISTANCE_MOVED
     }
 
     public enum EaseType
