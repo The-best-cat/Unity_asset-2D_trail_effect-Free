@@ -5,12 +5,14 @@ namespace BlackCatTrail
 {
     public class TrailObject : MonoBehaviour
     {
+        public TrailProcessor TrailProcessor => processor;
+
         private float elapsedTime;
         private bool ease;
         private Vector2 start, end;
         private Vector3 position;
         private TrailInstance instance;
-        private TrailProcessor container;
+        private TrailProcessor processor;
         private SpriteRenderer sr;
         private Func<float, float, float> equation;
 
@@ -19,9 +21,9 @@ namespace BlackCatTrail
             sr = GetComponent<SpriteRenderer>();
         }
 
-        public void Initialise(TrailProcessor container, TrailInstance instance, Vector3 spawnPosition, Func<float, float, float> equation)
+        public void Initialise(TrailProcessor processor, TrailInstance instance, Vector3 spawnPosition, Func<float, float, float> equation)
         {
-            this.container = container;
+            this.processor = processor;
             this.instance = instance;
             this.equation = equation;
             ease = equation != null;
@@ -56,7 +58,7 @@ namespace BlackCatTrail
 
             if (elapsedTime >= instance.Lifespan)
             {
-                container.DisableTrail();
+                processor.DisableTrail();
             }
         }
     }

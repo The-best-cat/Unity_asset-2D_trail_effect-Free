@@ -6,6 +6,8 @@ namespace BlackCatTrail
 {
     public class TrailProcessor : MonoBehaviour
     {
+        public TrailInstance TrailInstance => instance;
+
         private float currentDepth, timeOrDistance;       
         private bool isSpawning;
         private Vector2 prevPos, prevSpawnPos;
@@ -35,6 +37,11 @@ namespace BlackCatTrail
             {
                 Spawn(trans.position);
             }
+        }
+
+        public int GetActiveTrailCount()
+        {
+            return activeTrail.Count;
         }
 
         public void StopSpawning()

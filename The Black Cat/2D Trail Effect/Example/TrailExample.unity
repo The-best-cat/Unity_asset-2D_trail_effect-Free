@@ -495,7 +495,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoCleanUp: 1
   cleanUpAfterSeconds: 10
-  numberOfTrailRemains: 0
+  numberOfTrailRemains: 10
+  debugMode: 0
+  debugGameObject: {fileID: 0}
 --- !u!4 &1962640448
 Transform:
   m_ObjectHideFlags: 0
